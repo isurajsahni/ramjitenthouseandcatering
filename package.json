@@ -1,0 +1,27 @@
+{
+  "name": "satya-tent-house-website",
+  "version": "1.0.0",
+  "description": "Modern website for Satya Tent House - Best tent rental, catering, and decoration services in Punjab",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --open=/ --watch=.",
+    "start": "npx live-server --port=3000 --open=/",
+    "preview": "npx live-server --port=8080 --open=/"
+  },
+  "keywords": [
+    "tent-house",
+    "ludhiana",
+    "punjab",
+    "catering",
+    "decoration",
+    "wedding"
+  ],
+  "author": "Satya Tent House",
+  "license": "MIT",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/satyatenthouse/website"
+  }
+}
+

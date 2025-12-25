@@ -1,6 +1,6 @@
-# Satya Tent House Website
+## Ram Ji Tent House and Catering — Website
 
-A modern, responsive website for Satya Tent House - the leading tent rental, catering, and decoration service provider in Punjab.
+A modern, responsive static website for Ram Ji Tent House and Catering — tent house setup, catering, and decoration services across Punjab.
 
 ## Features
 
@@ -23,7 +23,6 @@ A modern, responsive website for Satya Tent House - the leading tent rental, cat
    - Tent House Services
    - Catering Services
    - Flower Decoration
-   - Wholesale Tent Material
 4. **Gallery** - Filterable image gallery with lightbox
 5. **Contact** - Contact form, map, contact information
 6. **Blog** - Articles and tips
@@ -47,7 +46,7 @@ A modern, responsive website for Satya Tent House - the leading tent rental, cat
 ## File Structure
 
 ```
-satyatenthouse/
+ramjitenthouseandcatering/
 ├── index.html              # Home page
 ├── about.html              # About page
 ├── services.html           # Services overview
@@ -58,7 +57,7 @@ satyatenthouse/
 │   ├── tent-house.html
 │   ├── catering.html
 │   ├── flower-decoration.html
-│   └── wholesale-tent-material.html
+│   └── wholesale-tent-material.html   # kept for compatibility but unlinked
 ├── locations/
 │   ├── index.html          # All locations
 │   └── ludhiana.html       # City pages (create more as needed)
@@ -88,7 +87,7 @@ Replace placeholder images in the following directories:
 ### 2. Update Contact Information
 Edit the following in all HTML files:
 - Phone numbers: `+91 98765 43210`
-- Email: `info@satyatenthouse.com`
+- Email: `contact@example.com`
 - Address: Ludhiana, Punjab
 
 ### 3. Google Maps
@@ -105,6 +104,7 @@ Update social media links in the footer:
 - Update meta descriptions for each page
 - Add your Google Analytics tracking code
 - Submit sitemap to Google Search Console
+ - Primary focus: Punjab locations and “tent house”, “catering”, “decoration”
 
 ## Customization
 
@@ -112,9 +112,9 @@ Update social media links in the footer:
 Edit CSS variables in `css/style.css`:
 ```css
 :root {
-    --primary-color: #d32f2f;
-    --secondary-color: #1976d2;
-    --accent-color: #ffa000;
+    --primary-color: #E63946;
+    --secondary-color: #1D3557;
+    --accent-color: #F4B400;
 }
 ```
 
@@ -150,14 +150,12 @@ Edit CSS variables in `css/style.css`:
 - Minified assets for production
 - Fast loading times
 
-## Keywords Integration
-The website is optimized for the following primary keywords:
-- tent house in ludhiana
+## Keywords (SEO focus: Punjab)
 - tent house in punjab
-- catering services ludhiana
+- tent house in ludhiana
+- catering services punjab
 - wedding tent punjab
 - flower decoration ludhiana
-- wholesale tent material
 
 ## Future Enhancements
 - [ ] Online booking system
@@ -169,11 +167,11 @@ The website is optimized for the following primary keywords:
 
 ## Support
 For any issues or questions:
-- Email: info@satyatenthouse.com
+- Email: contact@example.com
 - Phone: +91 98765 43210
 
 ## License
-© 2024 Satya Tent House. All Rights Reserved.
+© 2024–2025 Ram Ji Tent House and Catering. All Rights Reserved.
 
 ---
 

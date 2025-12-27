@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
     initCounters();
     initFilterGallery();
     initAdvancedAnimations();
+    initImageFallbacks();
 });
 
 // ==================== HERO BACKGROUND SLIDER ====================
@@ -770,7 +771,7 @@ function initImageCarousel() {
         
         // Auto play
         function startAutoPlay() {
-            autoPlayInterval = setInterval(nextSlide, 5000); // Change slide every 5 seconds
+            autoPlayInterval = setInterval(nextSlide, 3000); // Change slide every 3 seconds
         }
         
         function stopAutoPlay() {
@@ -845,4 +846,35 @@ console.log('%c ✨ Best Tent House in Punjab ', 'background: #1D3557; color: wh
 console.log('%c 🌟 Modern Indian Event Theme ', 'background: #F4B400; color: #1D3557; font-size: 12px; padding: 5px;');
 console.log('Website: https://satyatenthouse.com');
 console.log('Contact: +91 98765 43210');
+
+// ==================== IMAGE FALLBACKS ====================
+function initImageFallbacks() {
+    const fallbackPool = [
+        'images/gallery/wedding.jpg',
+        'images/gallery/lamp.jpg',
+        'images/gallery/chairs.jpg',
+        'images/gallery/flower.jpg',
+        'images/gallery/sofa.png',
+        'images/gallery/tent.png'
+    ];
+
+    function applyRandomFallback(img) {
+        if (img.dataset.fallbackApplied) return;
+        img.dataset.fallbackApplied = '1';
+        const pick = fallbackPool[Math.floor(Math.random() * fallbackPool.length)];
+        img.src = pick;
+    }
+
+    document.querySelectorAll('img').forEach(img => {
+        // If src missing, set immediately
+        const src = img.getAttribute('src');
+        if (!src || src.trim() === '') {
+            applyRandomFallback(img);
+        }
+        // On error, replace with a random available image
+        img.addEventListener('error', function() {
+            applyRandomFallback(img);
+        });
+    });
+}
 

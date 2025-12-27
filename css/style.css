@@ -1591,6 +1591,14 @@ button {
         order: 3;
     }
 
+    /* Force black navigation text on phones */
+    .navbar.transparent .logo h1,
+    .navbar.transparent .nav-menu a,
+    .navbar.transparent .mobile-menu-toggle {
+        color: var(--text-color) !important;
+        text-shadow: none;
+    }
+
     .hero-buttons {
         flex-direction: column;
     }

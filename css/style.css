@@ -125,6 +125,11 @@ button {
     text-shadow: 0 2px 4px rgba(0,0,0,0.3);
 }
 
+.navbar.transparent .mobile-menu-toggle {
+    color: var(--white-color);
+    text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+}
+
 .navbar.scrolled {
     box-shadow: var(--shadow-lg);
 }
@@ -1560,9 +1565,9 @@ button {
 }
 
 @media (max-width: 768px) {
-    /* Hide burger icon on phones and center header CTA */
+    /* Show burger icon on phones and center header CTA */
     .mobile-menu-toggle { 
-        display: none; 
+        display: block; 
     }
 
     .nav-wrapper > .btn {

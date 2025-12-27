@@ -1570,9 +1570,25 @@ button {
         display: block; 
     }
 
+    .nav-wrapper {
+        justify-content: flex-start;
+    }
+
     .nav-wrapper > .btn {
+        order: 2;
         margin: 0 auto;
         display: inline-block;
+    }
+
+    /* Push the hamburger toggle to the far right */
+    .mobile-menu-toggle {
+        order: 4;
+        margin-left: auto;
+    }
+
+    /* Ensure nav menu comes before the toggle in DOM flow (hidden off-canvas) */
+    .nav-menu {
+        order: 3;
     }
 
     .hero-buttons {

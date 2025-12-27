@@ -22,15 +22,29 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==================== HERO BACKGROUND SLIDER ====================
 function initHeroSlider() {
     const heroBackground = document.querySelector('.hero-background');
-    const sliderDots = document.querySelectorAll('.slider-dot');
+    let sliderDots = document.querySelectorAll('.slider-dot');
+    const dotsContainer = document.querySelector('.hero-slider-dots');
     
     if (heroBackground) {
         // Array of background images
         const backgrounds = [
             'images/background 1.png',
             'images/background 2.png',
-            'images/background 3.png'
+            'images/background 3.png',
+            'images/gallery/wedding.jpg',
+            'images/gallery/lamp.jpg',
+            'images/gallery/chairs.jpg'
         ];
+        
+        // Ensure dot count matches backgrounds
+        if (dotsContainer && sliderDots.length !== backgrounds.length) {
+            let dotsMarkup = '';
+            backgrounds.forEach((_, i) => {
+                dotsMarkup += `<span class="slider-dot${i === 0 ? ' active' : ''}" data-slide="${i}"></span>`;
+            });
+            dotsContainer.innerHTML = dotsMarkup;
+            sliderDots = dotsContainer.querySelectorAll('.slider-dot');
+        }
         
         let currentIndex = 0;
         let autoPlayInterval;
@@ -73,13 +87,15 @@ function initHeroSlider() {
         }
         
         // Click event for dots
-        sliderDots.forEach((dot, index) => {
-            dot.addEventListener('click', function() {
-                stopAutoPlay();
-                changeSlide(index);
-                startAutoPlay(); // Restart auto-play after manual selection
+        if (sliderDots.length) {
+            sliderDots.forEach((dot, index) => {
+                dot.addEventListener('click', function() {
+                    stopAutoPlay();
+                    changeSlide(index);
+                    startAutoPlay(); // Restart auto-play after manual selection
+                });
             });
-        });
+        }
         
         // Start auto-play
         startAutoPlay();
@@ -726,12 +742,66 @@ function initImageCarousel() {
     
     carousels.forEach(carousel => {
         const slides = carousel.querySelector('.carousel-slides');
-        const slideElements = carousel.querySelectorAll('.carousel-slide');
+        let slideElements = carousel.querySelectorAll('.carousel-slide');
         const prevBtn = carousel.querySelector('.carousel-nav.prev');
         const nextBtn = carousel.querySelector('.carousel-nav.next');
         const indicators = carousel.querySelectorAll('.carousel-indicator');
         
-        if (!slides || slideElements.length === 0) return;
+        if (!slides) return;
+        
+        // Populate slides if empty or too few, and ensure images exist
+        const pool = [
+            'images/gallery/wedding.jpg',
+            'images/gallery/lamp.jpg',
+            'images/gallery/chairs.jpg',
+            'images/gallery/flower.jpg',
+            'images/gallery/sofa.png',
+            'images/gallery/tent.png',
+            'images/gallery/light decoration.jpg',
+            'images/gallery/lamp1.jpg'
+        ];
+        
+        function ensureImage(el, i) {
+            const img = el.querySelector('img');
+            if (!img) {
+                const image = document.createElement('img');
+                image.src = pool[i % pool.length];
+                el.appendChild(image);
+            } else if (!img.getAttribute('src') || img.getAttribute('src').trim() === '') {
+                img.src = pool[i % pool.length];
+            }
+            // fallback on error
+            (el.querySelector('img')).addEventListener('error', function() {
+                this.src = pool[(i + 1) % pool.length];
+            });
+        }
+        
+        if (slideElements.length === 0) {
+            // Create a minimal set of slides
+            for (let i = 0; i < 5; i++) {
+                const slide = document.createElement('div');
+                slide.className = 'carousel-slide';
+                const image = document.createElement('img');
+                image.src = pool[i % pool.length];
+                slide.appendChild(image);
+                slides.appendChild(slide);
+            }
+            slideElements = carousel.querySelectorAll('.carousel-slide');
+        } else {
+            slideElements.forEach((el, i) => ensureImage(el, i));
+            // If less than 3 slides, append more
+            if (slideElements.length < 3) {
+                for (let i = slideElements.length; i < 3; i++) {
+                    const slide = document.createElement('div');
+                    slide.className = 'carousel-slide';
+                    const image = document.createElement('img');
+                    image.src = pool[i % pool.length];
+                    slide.appendChild(image);
+                    slides.appendChild(slide);
+                }
+                slideElements = carousel.querySelectorAll('.carousel-slide');
+            }
+        }
         
         let currentSlide = 0;
         const totalSlides = slideElements.length;
